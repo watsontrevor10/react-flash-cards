@@ -34,6 +34,14 @@ class App extends Component {
     this.setState({ cards, })
   }
 
+  editCard = ( id ) => {
+    const cards = this.state.cards.slice( card => {
+      if (card.id !== id)
+        return card
+    })
+    this.setState({ cards, })
+  }
+
   toggleForm = () => this.setState({ showForm: !this.state.showForm, })
 
   render() {
