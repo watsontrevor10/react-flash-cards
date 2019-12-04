@@ -14,7 +14,10 @@ class Card extends React.Component {
     return (
       <Table.Row>
         <Table.Cell>{this.props.question}</Table.Cell>
-        <Table.Cell>{this.state.showAns ? this.props.answer : <Button onClick={this.toggleAns}>Show Answer</Button>} </Table.Cell>
+        <Table.Cell>
+          {this.state.showAns ? this.props.answer : "Answer"}
+          <Button onClick={this.toggleAns}>Show Answer</Button> 
+        </Table.Cell>
         <Button color="red" onClick={() => this.props.remove(this.props.id)}>Delete</Button>
         {/* edit button doesn't work, need to be able to pass data into form state */}
         <Button color="blue inverted" >Edit</Button>
