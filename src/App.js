@@ -14,7 +14,7 @@ class App extends Component {
       {id: 2, question: "how?", answer: "with great effort", },
       {id: 3, question: "who?", answer: "not me", },
     ],
-
+    showForm: false,
   }
 
   getId = () => {
@@ -34,16 +34,23 @@ class App extends Component {
     this.setState({ cards, })
   }
 
+  toggleForm = () => this.setState({ showForm: !this.state.showForm, })
+
   render() {
+    const addAns = "Add Question"
+    const cancelAns = "Cancel"
     return (
       <Container style={{paddingTop: "25px", backgroundImage: {imgSrc1}}}>
         <h1>React Flash Cards</h1> 
         <Segment>
           <Cards cards={this.state.cards} remove={this.removeCard} />
-          <h2>Answer</h2>
-          <Button color="blue inverted">Add Question</Button>
-        </Segment>        
-      <CardForm add={this.addCard}/>
+          <Button color="blue inverted" onClick={this.toggleForm}>{this.state.showForm ? cancelAns : addAns }</Button>
+        </Segment> 
+        {
+          this.state.showForm ? 
+          <CardForm add={this.addCard} /> 
+          : null
+        }       
       
       </Container>
     )
